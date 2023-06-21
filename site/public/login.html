@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>LOGIN | Techbyte Hub</title>
+
+    <script src="./js/sessao.js"></script>
+
+    <link rel="icon" href="assets/imgs/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+</head>
+
+<body style="overflow: hidden;">
+    <div class="container" style="--d: 0s">
+        <div class="header-home">
+            <div class="nav">
+                <img id="logo" src="./assets/imgs/logo.png" alt="">
+                <ul>
+                    <li onclick="goToHome()" id="aqui">HOME</li>
+                    <li>GAMES</li>
+                    <li onclick="goToHardware()">SOBRE HARDWARE</li>
+                    <li onclick="goToPerfil()">PERFIL</li>
+                </ul>
+                <button class="btnLogin" onclick="goToLog()">LOGIN</button>
+            </div>
+        </div>
+
+        <div class="all">
+            <div class="alerta_erro">
+                <div class="card_erro" id="cardErro">
+                    <span id="mensagem_erro"></span>
+                </div>
+            </div>
+            <div class="card-login">
+
+                <div class="content-login">
+                    <div class="coisas-login">
+                        <div class="content-content">
+                            <div class="formulario">
+                                <div class="campo">
+                                    <span>E-mail:</span>
+                                    <input id="email_input" type="text" placeholder="Login">
+                                </div>
+                                <div class="campo">
+                                    <span>Senha:</span>
+                                    <input id="senha_input" type="text" placeholder="******">
+                                </div>
+                                <button class="botao" onclick="entrar()">Entrar</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="foto-login"></div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</body>
+
+</html>
+
+<script>
+    function goToLog() {
+        window.location.href = 'login.html'
+    }
+
+    function goToHome() {
+        window.location.href = 'home.html'
+    }
+
+    function goToHardware() {
+        window.location.href = 'sobre.html'
+    }
+
+    function goToPerfil() {
+        window.location.href = 'perfil.html'
+    }
+
+
+    function goToSaiba() {
+        window.location.href = 'sobre.html'
+    }
+
+    function playAgili() {
+        window.location.href = 'agilidade.html'
+    }
+
+    function playCruz() {
+        window.location.href = 'cruzadinha.html'
+    }
+
+</script>

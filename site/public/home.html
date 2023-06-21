@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HOME | Techbyte Hub</title>
+
+    <script src="./js/funcoes.js"></script>
+
+    <link rel="icon" href="assets/imgs/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+</head>
+
+<body>
+    <div class="container" style="--d: 0s">
+        <div class="header-home">
+            <div class="nav">
+                <img id="logo" src="./assets/imgs/logo.png" alt="">
+                <ul>
+                    <li onclick="goToHome()" id="aqui">HOME</li>
+                    <li>GAMES</li>
+                    <li onclick="goToHardware()">SOBRE HARDWARE</li>
+                    <li onclick="goToPerfil()">PERFIL</li>
+                </ul>
+                <button class="btnLogin" onclick="goToLog()">LOGIN</button>
+            </div>
+        </div>
+
+        <div class="all">
+            <div class="foto-texto">
+                <div class="text" id="texthome">
+                    <h1>CHALLENGE YOURSELF</h1>
+                    <p>Descubra mais sobre o mundo da tecnologia e hardware</p>
+                    <button id="saibaMais2" onclick="goToSaiba()">Saiba Mais</button>
+                </div>
+                <div class="gif">
+                    <img src="assets/imgs/yy3.gif" alt="">
+                </div>
+            </div>
+            <!-- <div class="quadrado"></div> -->
+        </div>
+        <div class="games">
+            <div class="content-games">
+
+                <div class="bolinha" id="b1"></div> <!-- bolinha -->
+                <div class="bolinha" id="b2"></div> <!-- bolinha -->
+                <div class="bolinha" id="b3"></div> <!-- bolinha -->
+
+
+                <div class="card-game">
+                    <div class="content-card">
+                        <img src="./assets/imgs/pc.png" alt="">
+                        <a href="jogo.html">
+                            <h2>CRUZADINHA</h2>
+                        </a>
+                        <p>Um jogo de raciocínio lógico</p>
+                        <button onclick="playCruz()" class="btn2">PLAY</button>
+                    </div>
+                </div>
+
+                <div class="card-game">
+                    <div class="content-card">
+                        <img src="./assets/imgs/game.png" alt="">
+                        <a href="quizz.html">
+                            <h2>GAME DE AGILIDADE</h2>
+                        </a>
+                        <p>Um jogo de agilidade</p>
+                        <button onclick="playAgili()" class="btn2">PLAY</button>
+                    </div>
+                </div>
+
+                <div class="card-game">
+                    <div class="content-card">
+                        <img src="./assets/imgs/note.png" alt="">
+                        <a href="habilidade.html">
+                            <h2>SAIBA SOBRE HARDWARE</h2>
+                        </a>
+                        <p>Descubra este universo</p>
+                        <button onclick="goToSaiba()" class="btn2">GO</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer-home">
+            Developed by Bianca & Sarah ©
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function goToLog() {
+        window.location.href = 'login.html'
+    }
+
+    function goToSaiba() {
+        window.location.href = 'sobre.html'
+    }
+
+    function playAgili() {
+        window.location.href = 'agilidade.html'
+    }
+
+    function playCruz(){
+        window.location.href = 'cruzadinha.html'
+    }
+
+    function playQuizz(){
+        window.location.href = 'quizz.html'
+    }
+
+    function goToHardware(){
+        window.location.href = 'sobre.html'
+    }
+
+</script>

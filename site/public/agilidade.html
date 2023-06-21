@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>JOGO DE AGILIDADE | Techbyte Hub</title>
+
+    <script src="./js/funcoes.js"></script>
+
+    <link rel="icon" href="assets/imgs/favicon.png">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+
+</head>
+
+<body>
+    <div class="container" style="--d: 0s">
+        <div class="header-home">
+            <div class="nav">
+                <img id="logo" src="./assets/imgs/logo.png" alt="">
+                <ul>
+                    <li onclick="goToHome()" id="aqui">HOME</li>
+                    <li>GAMES</li>
+                    <li onclick="goToHardware()">SOBRE HARDWARE</li>
+                    <li onclick="goToPerfil()">PERFIL</li>
+                </ul>
+                <button class="btnLogin" onclick="goToLog()">LOGIN</button>
+            </div>
+        </div>
+
+        <div class="all" id="all">
+            <div class="foto-texto" id="all_cruz" style="display: none;">
+                <div class="gif">
+                    <img src="assets/imgs/game.webp" alt="">
+                </div>
+                <div class="text">
+                    <h1>CRUZADINHA</h1>
+                    <p>Divirta-se e aprenda mais sobre elementos de hardware</p>
+                    <button id="saibaMais" onclick="desaparecerDiv()">PLAY</button>
+                </div>
+
+            </div>
+            <div class="cruzadinha">
+                <article>
+                    <div class="container-cruz">
+                        <div id="div_game" id="gameAgilidade">
+                            <div class="news" id="game_sessao">
+                                <div id="gifgame" class="gifgame"></div>
+                                <div id="game_content" class="game_content">
+                                    <h1>JOGO DE AGILIDADE</h1>
+                                    <p>
+                                        Descubra o quanto você sabe sobre hardware através deste divertido jogo!
+                                    </p>
+                                    <p>
+                                        Neste jogo de agilidade, você deverá escrever a quantidade máxima de
+                                        termos de hardware que você conhece, e ao final do tempo, sua pontuação
+                                        será exibida!
+                                    </p>
+                                    <button id="btn-play" onclick="jogar()">JOGAR</button>
+                                </div>
+
+                                <div id="game" class="news" style="display: none">
+                                    <div class="group_itens">
+                                        <div class="relogio">
+                                            <img src="assets/imgs/clock.png" width="60px" height="60px"
+                                                style="margin-right: 10px;" alt="">
+                                            <h1 id="counter">00:00:00</h1>
+                                        </div>
+                                        <div class="lembrete">
+                                            <p>Atenção! Você tem <span>1 minuto e 30 segundos </span>para digitar
+                                                quantos termos de hardware você conseguir!</p>
+                                            <p>Ps.: Lembre de colocar em letra maiúscula em caso de siglas, se
+                                                necessário...</p>
+                                        </div>
+                                        <div class="inputbuton">
+                                            <input type="text" id="input_personagem"
+                                                placeholder="Digite Aqui o Nome do Termo!">
+
+                                            <button onclick="incluir()">Incluir na lista</button>
+                                            <button onclick="finalizarGame()" id="naoconsigo">Não consigo mais
+                                                pensar!</button>
+
+
+                                        </div>
+                                        <div class="lista_user">
+                                            <span id="lista_user"></span>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div id="final_game" style="display: none;">
+                                    <span id="result"></span>
+                                    <button><a href="agilidade.html">Refazer</a></button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="bolinha" id="b1-2"></div> <!-- bolinha -->
+                        <div class="bolinha" id="b2-2"></div> <!-- bolinha -->
+                        <div class="bolinha" id="b3-2"></div> <!-- bolinha -->
+
+                        <div class="bolinha" id="b4-2"></div> <!-- bolinha -->
+                        <div class="bolinha" id="b5-2"></div> <!-- bolinha -->
+                        <div class="bolinha" id="b6-2"></div> <!-- bolinha -->
+                    </div>
+
+                </article>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
+
+<script>
+    function jogar() {
+        gifgame.style.display = "none";
+        game_content.style.display = "none";
+
+        game.style.display = "flex";
+
+        start();
+    }
+
+    ////////////////////////////////////////////////////////
+    //comeco da logica do game (timer)
+    ("use strict");
+
+    var hh = 0;
+    var mm = 0;
+    var ss = 0;
+
+    var tempo = 1000; //Quantos milésimos valem 1 segundo?
+    var cron;
+
+    //Inicia o temporizador
+    function start() {
+        cron = setInterval(() => {
+            timer();
+        }, tempo);
+    }
+
+    //Faz a contagem do tempo e exibição
+    function timer() {
+        ss++; //Incrementa +1 na variável ss
+
+        if (ss == 60) {
+            //Verifica se deu 59 segundos
+            ss = 0; //Volta os segundos para 0
+            mm++; //Adiciona +1 na variável mm
+
+            if (mm == 60) {
+                //Verifica se deu 59 minutos
+                mm = 0; //Volta os minutos para 0
+                hh++; //Adiciona +1 na variável hora
+            }
+        }
+
+        //Cria uma variável com o valor tratado HH:MM:SS
+        var format =
+            (hh < 10 ? "0" + hh : hh) +
+            ":" +
+            (mm < 10 ? "0" + mm : mm) +
+            ":" +
+            (ss < 10 ? "0" + ss : ss);
+
+        //Insere o valor tratado no elemento counter
+        document.getElementById("counter").innerText = format;
+
+        if (ss >= 45) {
+            counter.style.color = "red"
+        }
+        if (mm == 1 && ss == 0) {
+            // Verifica se passou 1 minuto
+            clearInterval(cron); // Para o temporizador
+            finalizarGame(); // Chama a função a ser executada após 1 minuto
+        }
+
+
+        //Retorna o valor tratado
+        return format;
+
+    }
+
+    ///////////////////////////////////logica da validação de personagem
+
+    var lista_personagens = ['CPU', 'ULA', 'Registradores', 'RAM', 'ROM', 'EPROM', 'FLASH', 'Memória de Massa', 'DMA', 'CS', 'Adress Bus', 'Data Bus', 'I5', 'I7', 'Dual Core', 'Quad Core'];
+
+    var lista_personagem_user = []
+
+    function incluir() {
+        lista_user.innerHTML = ""
+
+        var personagem_input = input_personagem.value
+
+
+        if (personagem_input == "") {
+            alert('Insira um personagem válido!')
+        } else {
+            lista_personagem_user.push(personagem_input)
+        }
+
+
+        lista_user.innerHTML = `${lista_personagem_user}`
+
+        input_personagem.value = ""
+    }
+
+    //variavel para contagem de pontos
+    var pontos = 0
+
+    function finalizarGame() {
+        final_game.style.display = 'flex'
+        game.style.display = 'none'
+
+        for (var i = 0; i < lista_personagem_user.length; i++) {
+            if (lista_personagens.indexOf(lista_personagem_user[i]) > -1) {
+                pontos++
+            }
+        }
+
+        if (pontos == 0) {
+            result.innerHTML = `Sua pontuação foi ${pontos} pontos! <br>
+              Não sabe nada mesmo! 😒
+          `
+        } else if (pontos <= 5) {
+            result.innerHTML = `Sua pontuação foi ${pontos} pontos! <br>
+              Dá pra melhorar bastante! 🤷
+          `
+        } else if (pontos <= 7) {
+            result.innerHTML = `Sua pontuação foi ${pontos} pontos! <br>
+              Até que você sabe um pouco! 😁
+          `
+        } else if (pontos <= 10) {
+            result.innerHTML = `Sua pontuação foi ${pontos} pontos! <br>
+              Você conhece bastante até! 😯
+          `
+        } else {
+            result.innerHTML = `Sua pontuação foi ${pontos} pontos! <br>
+              Sem palavras, arrasou! 🎉
+          `
+        }
+
+    }
+
+    function goToLog() {
+        window.location.href = 'login.html'
+    }
+
+    function goToHome() {
+        window.location.href = 'home.html'
+    }
+
+    function goToSaiba() {
+        window.location.href = 'saibaMais.html'
+    }
+
+    function playAgili() {
+        window.location.href = 'agilidade.html'
+    }
+
+    function playCruz() {
+        window.location.href = 'cruzadinha.html'
+    }
+
+    function playQuizz() {
+        window.location.href = 'quizz.html'
+    }
+
+    function goToHardware() {
+        window.location.href = 'sobre.html'
+    }
+
+    function goToPerfil(){
+        window.location.href = 'perfil.html'
+    }
+</script>
